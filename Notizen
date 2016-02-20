@@ -1,0 +1,16 @@
+8.01.2016
+DFT-Erkennung läuft soweit ganz gut.
+Standardabweichung beträgt 0,018 in etwa. Das entspricht einem Messrauschen von einem Grad.
+
+1160 - 1449 0.0184525, 326°   		;;  0,02   	90°   
+1449 - 1739 0,0187658, 303,087		;;  0,015  	70°
+1739 - 2028 0,0141578, 282,316		;;  0,011	60°
+2028 - 2318 0,00908249, 298,974		;;  0,007	40°
+2318 - 2608 0,0105363, 95,7176		;;  0,006	40°	
+2608 - 2897 0,00801064, 101,372		;;  0,008	45°
+
+DH_phi_gap_10 Werte liegen betragsmäßig innerhalb der Standardabweichung. Passt auch ungefähr, da immer 10 Werte zusammengefasst werden und damit die Standardabweichung auf 3 Standardabweichungen erweitert wird. (Darin liegen immerhin 99,5% aller Fälle).
+
+Vielleicht sollte sich der Regler selbst bestätigen, indem er zwei aufeinander folgende Werte mit Schwellüberschreitung registieriert, dann sind es schon 6 Sigma. 
+
+Falls dennoch eine fehlerhafte Anregung auftreten würde, würde man ungefähr eine solche 2sigma Anregung anregen. Das erstmal ausprobieren. 

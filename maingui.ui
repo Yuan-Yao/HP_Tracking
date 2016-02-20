@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainGUI</class>
+ <widget class="QMainWindow" name="MainGUI">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1920</width>
+    <height>1040</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainGUI</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QPushButton" name="Starte_Simulation">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>120</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Starte Simulation</string>
+    </property>
+   </widget>
+   <widget class="QScrollBar" name="bunch_scroll">
+    <property name="geometry">
+     <rect>
+      <x>950</x>
+      <y>590</y>
+      <width>160</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="log_ref_value">
+    <property name="geometry">
+     <rect>
+      <x>1690</x>
+      <y>910</y>
+      <width>80</width>
+      <height>30</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Monitoring">
+    <property name="geometry">
+     <rect>
+      <x>1830</x>
+      <y>875</y>
+      <width>80</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Monitoring</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Turn">
+    <property name="geometry">
+     <rect>
+      <x>960</x>
+      <y>620</y>
+      <width>57</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Rampe_u_Stoer">
+    <property name="geometry">
+     <rect>
+      <x>1830</x>
+      <y>945</y>
+      <width>80</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Ram_a_Dis</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Regler">
+    <property name="geometry">
+     <rect>
+      <x>1830</x>
+      <y>910</y>
+      <width>80</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Regler</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Parameter">
+    <property name="geometry">
+     <rect>
+      <x>1830</x>
+      <y>840</y>
+      <width>80</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Parameter</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="emittance_out">
+    <property name="geometry">
+     <rect>
+      <x>1426</x>
+      <y>920</y>
+      <width>181</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Emittanz-Zuwachs:</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1920</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuHP_Tracking_Simulation">
+    <property name="title">
+     <string>HP-Tracking-Simulation</string>
+    </property>
+   </widget>
+   <addaction name="menuHP_Tracking_Simulation"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
