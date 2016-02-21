@@ -2,10 +2,9 @@
 #include "ui_maingui.h"
 
 //CONSTUCTOR and DESTRUCTOR
-MainGUI::MainGUI(QWidget *parent) :
-  QMainWindow(parent),
+MainGUI::MainGUI(QWidget *parent):QMainWindow(parent),//MainGUI ruft ConstructorFunk "MainGUI(QWidget *parent)" und "QMainWindow(parent)" aus seiner ParentKlasse auf.
 
-  ui(new Ui::MainGUI),
+  ui(new Ui::MainGUI),//Constructor von Klasse Ui::MainGUI aufrufen
   paraGUI(new ParaGUI()),
   monit(nullptr),
   para(new Parameter(*paraGUI)),
@@ -30,7 +29,8 @@ MainGUI::MainGUI(QWidget *parent) :
 {
   ui->setupUi(this);
   ui->Monitoring->setEnabled(false);
-  if(!p_save->al_exist()) p_save->save(*paraGUI);
+  if(!p_save->al_exist())
+      p_save->save(*paraGUI);
   p_save->load(*paraGUI);
 }
 
@@ -51,7 +51,7 @@ void MainGUI::time_start(){
 void MainGUI::time_end(){
   end = std::chrono::system_clock::now();
   auto elap = std::chrono::duration_cast<std::chrono::microseconds> (end-start);
-  qDebug() << "maingui time: " <<elap.count();
+  qDebug() << "MainGUI time: " <<elap.count();
 }
 
 void MainGUI::time_intervall(){
@@ -113,7 +113,7 @@ void MainGUI::tracking_simulation()
     delete temp;
   }
 
-  //delete parameters an read them anew from paragui
+  //delete parameters and read them a new from paragui
   if(para != nullptr){
     Parameter * temp = para;
     para = nullptr;
@@ -255,7 +255,7 @@ for (int i = 1; i < para->anz_Umdrehungen+1; i++){
     if (i%para->save_Gap == 0){
       qDebug() << i << log_ref->get_u_1R()[i];
       time_end();
-       time_start();
+      time_start();
       sep->get_from_lri(*lri);
       sep->set_full_length_dynamic_sep(0);
       sep->set_voltage(control->get_u());
@@ -389,7 +389,7 @@ void MainGUI::on_Starte_Simulation_clicked()
   ui->bunch_scroll->setMaximum(para->save_Slots-1);
   ui->bunch_scroll->setValue(para->save_Slots-1);
   ui->bunch_scroll->setSingleStep(1);
-  ui->bunch_scroll->setPageStep(10);
+  ui->bunch_scroll->setPageStep(10);//set bunch scroll button
 
   ui->Turn->resize(170,30);
   ui->Turn->move(1015,720);
