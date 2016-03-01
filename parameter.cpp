@@ -1,5 +1,6 @@
 #include "parameter.h"
 
+//The following reads parameter values from the ParaGUI
 Parameter::Parameter(ParaGUI & paraGUI) :
   anz_Umdrehungen(paraGUI.get_anz_um()),
   save_Gap(paraGUI.get_save_gap()),

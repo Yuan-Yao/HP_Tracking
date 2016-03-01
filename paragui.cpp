@@ -1,9 +1,9 @@
+//define get and set funcs in details
 #include "paragui.h"
 #include "ui_paragui.h"
 
-ParaGUI::ParaGUI(QWidget *parent) :
-  QWidget(parent),
-  ui(new Ui::ParaGUI)
+ParaGUI::ParaGUI(QWidget *parent)
+    :QWidget(parent),ui(new Ui::ParaGUI)
 {
   ui->setupUi(this);
 }
@@ -13,11 +13,11 @@ ParaGUI::~ParaGUI()
   delete ui;
 }
 
-//functions to read out variales from the ParameterGUI
+//define functions in detail in GUI which read out variales from the GUI
 bool ParaGUI::get_acc(){return ui->beschleunigung->isChecked();}
+int ParaGUI::get_anz_um(){return ui->anz_um->value();}
 int ParaGUI::get_anz_teil(){return ui->anz_teil->value();}
 int ParaGUI::get_anz_threads(){return ui->anz_threads->value();}
-int ParaGUI::get_anz_um(){return ui->anz_um->value();}
 bool ParaGUI::get_coasting(){return ui->coasting->isChecked();}
 int ParaGUI::get_hist_anz(){return ui->hist_anz->value();}
 QString ParaGUI::get_ion_sort(){return ui->ionen_sorte->currentText();}

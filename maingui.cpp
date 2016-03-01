@@ -6,8 +6,8 @@ MainGUI::MainGUI(QWidget *parent):QMainWindow(parent),//MainGUI ruft Constructor
 
   ui(new Ui::MainGUI),//Constructor von Klasse Ui::MainGUI aufrufen
   paraGUI(new ParaGUI()),
-  monit(nullptr),
-  para(new Parameter(*paraGUI)),
+  monit(nullptr),//nullptr is null pointer
+  para(new Parameter(*paraGUI)),//Parameter *para in header of maingui, Parameter is no class, but a struct, whose constructor is Parameter(PareGUI &)
   thread_count(para->threads),
   ref(new Referenz()),
   sep(new Seperatrix(*para,600,100)), //seperatrix save and dynamic resolution is set here
@@ -106,7 +106,7 @@ void MainGUI::tracking_simulation()
   //Reinitialisation Process
 
   //hide monitoring, and delete, if exists
-  if(monit != nullptr){
+  if(monit != nullptr){//if monit not a void pointer,then...
     monit->hide_GUI();
     Monitoring * temp = monit;
     monit = nullptr;

@@ -35,7 +35,7 @@ class MainGUI;
 
 class MainGUI : public QMainWindow//MainGUI, Tochterklasse von QMianWindow
 {
-    Q_OBJECT
+    Q_OBJECT// its for the signals and slots
 
   public:
     explicit MainGUI(QWidget *parent = 0);//explicit:Initialisierung muss explizit durch Konstruktor durchgeführt werden! Z.B. Formen wie "intA = 10" sind dann nicht erlaubt!
@@ -59,7 +59,7 @@ class MainGUI : public QMainWindow//MainGUI, Tochterklasse von QMianWindow
 
   private:
     Ui::MainGUI *ui;//under ui namespace a MainGUI pointer
-    ParaGUI * paraGUI;
+    ParaGUI *paraGUI;
     Monitoring *monit;
     Parameter *para;
     int thread_count;

@@ -21,18 +21,18 @@ class Controller
     const int s_F;  //constant of DSP_Software_Implementation41
     const int h;    //harmonic number
 
-    const double increment_f_FIR;  //pass-through-frequency modifier
-    const double fd_delay_Td;     //delay time of plant
-    const double internal_time_count; //sampling time
+    const double increment_f_FIR;       //pass-through-frequency modifier
+    const double fd_delay_Td;           //delay time of plant
+    const double internal_time_count;   //sampling time
 
-    double fd_fir_fpass;    //pass-through-frequency
-    int fd_delay_kd;     //delay zero tap shift for first coefficient
-    int fd_delay_fir1;   //zero tap shift for second coefficient
-    int fd_delay_fir2;   //zero tap shift for third coefficient
-    double gain_FIR;  //gain-factor
-    double gain_FIR_Liwei; //gain-factor for 3-Tap Liwei Controller
-    double offset; //time until enough values for filters are available; also suppress every turn calculation with experimental_type_filters
-    std::vector<int> energy_sink_flag; //energy_sink_controller_flag;
+    double fd_fir_fpass;                //pass-through-frequency
+    int fd_delay_kd;                    //delay zero tap shift for 1.st coefficient
+    int fd_delay_fir1;                  //      zero tap shift for 2.sec coefficient
+    int fd_delay_fir2;                  //      zero tap shift for 3.rd coefficient
+    double gain_FIR;                    //gain-factor
+    double gain_FIR_Liwei;              //gain-factor for 3-Tap Liwei Controller
+    double offset;                      //time until enough values for filters are available; also suppress every turn calculation with experimental_type_filters
+    std::vector<int> energy_sink_flag;  //energy_sink_controller_flag;
 
     std::vector<double> u;                            //control variable
     std::vector< std::vector<double> > fd_xfir;       //sum of product of coefficients and values
@@ -42,14 +42,14 @@ class Controller
 
     //Hamilton-DFT-phi_gap
     // continuous mean building
-    std::vector< std::vector<double> > DH_phi_gap; //Hamilton_DFT_Delta_phi_gap
-    std::vector< std::vector<double> > DH_phi_gap_10; //Hamilton_DFT_Delta_phi_gap_10
-    std::vector< std::vector<double> > DH_energy; // Hamilton_DFT_energy tracking vector
-    std::vector< std::vector<double> > DH_energy_10; // Hamilton_DFT_energy tracking compress;
-    std::vector< std::vector<double> > DH_integrator; // Integration over all DH_phi_gaps;
-    std::vector< std::vector<double> > DH_integrator_energy; //Energy estimation via Integration;
-    std::vector< std::vector<double> > DH_pos; // Hamilton_pos
-    std::vector< std::vector<double> > DH_vel; // Hamilton_vel
+    std::vector< std::vector<double> > DH_phi_gap;          //Hamilton_DFT_Delta_phi_gap
+    std::vector< std::vector<double> > DH_phi_gap_10;       //Hamilton_DFT_Delta_phi_gap_10
+    std::vector< std::vector<double> > DH_energy;           // Hamilton_DFT_energy tracking vector
+    std::vector< std::vector<double> > DH_energy_10;        // Hamilton_DFT_energy tracking compress;
+    std::vector< std::vector<double> > DH_integrator;       // Integration over all DH_phi_gaps;
+    std::vector< std::vector<double> > DH_integrator_energy;//Energy estimation via Integration;
+    std::vector< std::vector<double> > DH_pos;              // Hamilton_pos
+    std::vector< std::vector<double> > DH_vel;              // Hamilton_vel
     double DH_SD; //standard-deviation of measurements, when 100 measurements occured. Hopefully without further disturbances
     std::vector< int > DH_LDC; //counter for large deviations, minimum 11 times, because the deviation is 10 steps long;
     std::vector< double > DH_MD; //container for Maximum deviation during, when large deviations occur

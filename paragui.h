@@ -1,3 +1,4 @@
+// declare the get and set functions
 #ifndef PARAGUI_H
 #define PARAGUI_H
 
@@ -15,6 +16,7 @@ class ParaGUI : public QWidget
   public:
     explicit ParaGUI(QWidget *parent = 0);
     ~ParaGUI();
+    //followings are functions in ParaGUI
     int get_anz_um(); //number of turns
     int get_anz_teil(); //number of particles per thread
     int get_anz_threads(); //number of threads, depends on the maximum virtual threads a machine hast

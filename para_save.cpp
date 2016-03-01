@@ -9,7 +9,7 @@ para_save::para_save()
   file->setFileName(filename);
 }
 
-void para_save::save(ParaGUI &paragui)
+void para_save::save(ParaGUI &paragui)//write the parameters in a txt
 {
   file->open(QIODevice::WriteOnly);
   textStream = new QTextStream(file);
