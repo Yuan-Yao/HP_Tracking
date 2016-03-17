@@ -102,18 +102,41 @@ void Controller::no_controller(int i, Log_Bunch & log){
 //
 void Controller::three_Tap_Filter(int i,Log_Bunch & log, log_ref_i & lri, Parameter & para){
   //refer to paper "A Digital Beam-Phase Control System for Heavy-Ion Synchrotrons"
+  //i = Umdrehung
+  //k = Zähler für h ( Anzahl des Bunchs)
   //3-tap-filter
+    qDebug()<<"3-Tap-FIR Filter with i= "<<i;
   for(int k = 0; k <h; k++){
 
     fir_phi_det[k][i] = log.get_log_fft_phase_0_control(k,i)-Delta_phi_gap[k][i];
+    //qDebug()<<log.get_log_fft_phase_0_control(k,i)<<""<<Delta_phi_gap[k][i];
+
+    //qDebug()<<"fir_phi_det["<<k<<"]["<<i<<"]="<<fir_phi_det[k][i];
+
   }
   //If there are enough values for controller available
-  if ((i > fd_delay_fir2) && (para.coasting == false)){
+  if ((i > fd_delay_fir2) && (para.coasting == false)){//no acceleration
     for (int k = 0; k < h; k++){
+      qDebug()<<"fd_fir_fpass is: "<<fd_fir_fpass;//const???
+      //qDebug()<<"fd_delay_kd is: "<<fd_delay_kd;//const??
+      //qDebug()<<"fd_delay_fir1 is: "<<fd_delay_fir1;//const???
+      //qDebug()<<"fd_delay_fir2 is: "<<fd_delay_fir2;//const???
+      //qDebug()<<"s_F is "<<s_F;
       fd_xfir[k][i] = s_F*(-fir_phi_det[k][i]+2*fir_phi_det[k][i-fd_delay_fir1]-fir_phi_det[k][i-fd_delay_fir2])/32768;
+      //qDebug()<<"FIR1 is "<<fd_delay_fir1;
+      //qDebug()<<"FIR2 is "<<fd_delay_fir2;
+      qDebug()<<"SF is "<<s_F;
+      qDebug()<<"a is "<<a;
+      //qDebug()<<""
+
+
       fd_xI[k][i] =  a*(fd_xI[k][i-1])/32768+fd_xfir[k][i]; //integration
       Delta_phi_gap[k][i+1] = gain_FIR * fd_xI[k][i-fd_delay_kd]; //delay time for transmission to plant
+      qDebug()<<"Fd_delay"<<fd_delay_kd;
+      qDebug()<<"gain_FIR is "<<gain_FIR;
       double t_hilf = 1.0/(1.0+2.0/3.2);
+      qDebug()<<"t-hilf is "<<t_hilf;
+
       Delta_phi_gap[k][i+1] = t_hilf * (Delta_phi_gap[k][i+1]-Delta_phi_gap[k][i]) + Delta_phi_gap[k][i];
     }
   }
@@ -131,7 +154,9 @@ void Controller::three_Tap_Filter(int i,Log_Bunch & log, log_ref_i & lri, Parame
 
   //fit zero taps to new synchrotron-frequency; important in case of acceleration
   fd_fir_fpass = increment_f_FIR*lri.f_syn;
+  qDebug()<<increment_f_FIR<<"*"<<lri.f_syn<<"="<<fd_fir_fpass;
   fd_delay_kd = (int) (fd_delay_Td*lri.f_R+0.5);
+  qDebug()<<fd_delay_Td<<"*"<<lri.f_R<<"+"<<"0.5";
   fd_delay_fir1 = (int) (lri.f_R/(2*fd_fir_fpass)+0.5);
   fd_delay_fir2 = (int) (lri.f_R/(fd_fir_fpass)+0.5);
 }

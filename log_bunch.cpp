@@ -1,12 +1,15 @@
 #include "log_bunch.h"
+#include <qdebug.h>
 
+//constructor
 Log_Bunch::Log_Bunch(Parameter & para,Seperatrix & sep, int saveslots, int thread_count):
   pi(para.pi),
   h(para.h),
-  lost_particles(std::vector<double>(para.anz_Umdrehungen+1)),
-  emittance_com(std::vector<double> (para.anz_Umdrehungen+1))
+  lost_particles( std::vector<double>(para.anz_Umdrehungen+1) ),// lost_particles=anz_Umdrehnung+1???
+  emittance_sum( std::vector<double>(para.anz_Umdrehungen+1) )//
+
 {
-  log_bunch_phi.assign(saveslots+1,std::vector<double>(para.anz_Teilchen*thread_count));
+  log_bunch_phi.assign(saveslots+1,std::vector<double>(para.anz_Teilchen*thread_count));//(saveslot+1) X Mal Vector drin kopieren
   log_bunch_DEo.assign(saveslots+1,std::vector<double>(para.anz_Teilchen*thread_count));
   log_bunch_sep_pos.assign(saveslots+1,std::vector<double>(sep.get_phi_ring_sequence().size()));
   log_bunch_sep_neg.assign(saveslots+1,std::vector<double>(sep.get_phi_ring_sequence().size()));
@@ -27,6 +30,7 @@ Log_Bunch::Log_Bunch(Parameter & para,Seperatrix & sep, int saveslots, int threa
 }
 
 //save complete histograms, not every turn, because of limited amount of RAM
+//should look into the class histogram
 void Log_Bunch::save_histogramm(Histogramm & hist, int i){
   log_histogramm[i] = hist.histogramm_com;
   log_histogramm_dis[i] = hist.histogramm_dis_com;
@@ -74,7 +78,7 @@ void Log_Bunch::save_moments_1(std::vector<Bunch> & bunch, int i){
 
 //combine and normalise second order moments, emittance and lost particles of each thread and save them
 void Log_Bunch::save_moments_2(std::vector<Bunch> & bunch,Histogramm & hist,bool coasting, int i){
-  emittance_com[i] = 0;
+  emittance_sum[i] = 0;
   lost_particles[i] = 0;
   for(int k = 0; k < h; k++){
     log_bunch_moment_phi_2[k][i] = 0.0;
@@ -93,7 +97,7 @@ void Log_Bunch::save_moments_2(std::vector<Bunch> & bunch,Histogramm & hist,bool
   log_bunch_moment_phi_2[k][i] = log_bunch_moment_phi_2[k][i] / bunch.size();
   log_bunch_moment_phi_1_DEo_1[k][i] = log_bunch_moment_phi_1_DEo_1[k][i] / bunch.size();
   emittance[k][i] = sqrt(log_bunch_moment_phi_2[k][i]*log_bunch_moment_DEo_2[k][i]-pow(log_bunch_moment_phi_1_DEo_1[k][i],2));
-  emittance_com[i] += emittance[k][i]/h;
+  emittance_sum[i] += emittance[k][i]/h;
   }
   for (unsigned int j = 0; j<bunch.size(); j++){
     lost_particles[i] += bunch[j].lost_count;

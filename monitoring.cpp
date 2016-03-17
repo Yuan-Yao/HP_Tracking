@@ -145,7 +145,7 @@ QVector<double> Monitoring::get_plot_data (QString string){
   else if (string =="fft_phase_dis_0") return intern_log_bunch.get_log_fft_phase_dis_0(ui->h_spin_box->value()-1);
   else if (string =="fft_amp_dis_0") return intern_log_bunch.get_log_fft_amp_dis_0(ui->h_spin_box->value()-1);
   else if (string =="emittance_multi") return intern_log_bunch.get_emittance(ui->h_spin_box->value()-1);
-  else if (string =="emittance_multi_com") return intern_log_bunch.get_emittance_com();
+  else if (string =="emittance_multi_com") return intern_log_bunch.get_emittance_sum();
   else if (string =="moment_phi_1_multi") return intern_log_bunch.get_moment_phi_1(ui->h_spin_box->value()-1);
   else if (string =="moment_phi_2_multi") return intern_log_bunch.get_moment_phi_2(ui->h_spin_box->value()-1);
   else if (string =="moment_DEo_1_multi") return intern_log_bunch.get_moment_DEo_1(ui->h_spin_box->value()-1);

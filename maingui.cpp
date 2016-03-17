@@ -331,7 +331,7 @@ void MainGUI::on_Starte_Simulation_clicked()
   //}
   //curve4->setSamples(lauf,*temp);
 
-  curve4->setSamples(lauf,log_bunch->get_emittance_com());
+  curve4->setSamples(lauf,log_bunch->get_emittance_sum());
   curve4->attach(myplot4);
   bunchout->setStyle(QwtPlotCurve::NoCurve);
   bunchout->setSymbol(symbol);
@@ -499,5 +499,6 @@ void MainGUI::on_log_ref_value_editingFinished()
 {
   int arg1 = ui->log_ref_value->value();
   log_ref->show_stat(arg1);
+  qDebug()<<"show stat";
   ref->ausgabe_debug();
 }

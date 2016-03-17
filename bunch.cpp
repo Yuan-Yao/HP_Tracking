@@ -1,13 +1,14 @@
 #include "bunch.h"
 
+//constructor
 Bunch::Bunch(Parameter & para):
-  phi(std::vector<double>(para.anz_Teilchen)),
+  phi(std::vector<double>(para.anz_Teilchen)),//0,0,0,0...... in phi
   DEo(std::vector<double>(para.anz_Teilchen)),
   lost(std::vector<int>(para.anz_Teilchen)),
   lost_count(0.0),
   h(para.h),
-  mp1(std::vector<double>(h)),
-  md1(std::vector<double>(h)),
+  mp1(std::vector<double>(h)),//h dimentional vec
+  md1(std::vector<double>(h)),//...
   particle_count(std::vector<int>(h)),
   histogramm_complete(std::vector<double>(h*para.histo_anz)),
   histogramm_complete_energy(std::vector<double>(h*para.histo_anz)),
@@ -17,16 +18,19 @@ Bunch::Bunch(Parameter & para):
   mp1d1(std::vector<double>(h)),
   particle_in_bunch(std::vector<int>(para.anz_Teilchen))
 {
-  histogramm.assign(h,std::vector<double>(para.histo_anz));
-  histogramm_energy.assign(h,std::vector<double>(para.histo_anz));
-  histogramm_hamilton_energy.assign(h,std::vector<double>(para.histo_anz));
-  mp1_tracker.assign(h,QVector<double>(0));
-  md1_tracker.assign(h,QVector<double>(0));
+  histogramm.assign(h,std::vector<double>(para.histo_anz));//h mal vec full of para.histo_anz
+  histogramm_energy.assign(h,std::vector<double>(para.histo_anz));//...
+  histogramm_hamilton_energy.assign(h,std::vector<double>(para.histo_anz));//...
+  mp1_tracker.assign(h,QVector<double>(0));//h mal 0
+  md1_tracker.assign(h,QVector<double>(0));// h mal 0
 }
 
 //
 //first moment and histogram calculation
 //
+
+
+//md1 and ma1 initial with 0.0
 void Bunch::moment_actualisation(Parameter & para){
   for (unsigned int i = 0; i< mp1.size(); i++){
     mp1[i] = 0.0;
@@ -37,9 +41,9 @@ void Bunch::moment_actualisation(Parameter & para){
   //first order moments
   for(int i = 0; i < para.anz_Teilchen; i++){
     if (lost[i] == 0){
-      int temp = (int) ((phi[i]+para.pi)/2/para.pi);
+      int temp = (int) ((phi[i]+para.pi)/2/para.pi);//
       particle_in_bunch[i] = temp;
-      mp1[temp] += phi[i];
+      mp1[temp] += phi[i];//a=a+1
       md1[temp] += DEo[i];
       particle_count[temp] += 1;
     }

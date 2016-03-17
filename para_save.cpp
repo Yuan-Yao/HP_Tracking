@@ -2,7 +2,7 @@
 
 //constructor checks if a parameter file already exists, otherwise it creates one,
 //and opens it
-para_save::para_save()
+para_save::para_save()//txt erstellen
 {
   file = new QFile();
   filename = "parameter_init.txt";
@@ -69,30 +69,30 @@ void para_save::load(ParaGUI &paragui)
   if (file->exists()){
     file->open(QIODevice::ReadOnly);
     textStream = new QTextStream(file);
-    QString line = textStream->readLine(); line = textStream->readLine();qDebug() << line.toInt(0); paragui.set_anz_um(line.toInt(0));
-    line = textStream->readLine(); line = textStream->readLine();qDebug() << line.toInt(0); paragui.set_anz_teil(line.toInt(0));
-    line = textStream->readLine(); line = textStream->readLine();qDebug() << line.toInt(0); paragui.set_anz_threads(line.toInt(0));
-    line = textStream->readLine(); line = textStream->readLine();qDebug() << line.toInt(0); paragui.set_hist_anz(line.toInt(0));
-    line = textStream->readLine(); line = textStream->readLine();qDebug() << line.toInt(0); paragui.set_nukl_ener(line.toDouble(0));
-    line = textStream->readLine(); line = textStream->readLine();qDebug() << line.toInt(0); paragui.set_save_gap(line.toInt(0));
-    line = textStream->readLine(); line = textStream->readLine();qDebug() << line.toInt(0); paragui.set_spannung(line);
-    line = textStream->readLine(); line = textStream->readLine();qDebug() << line.toInt(0); paragui.set_ion_sort(line);
-    line = textStream->readLine(); line = textStream->readLine();qDebug() << line.toInt(0); paragui.set_regler(line);
-    line = textStream->readLine(); line = textStream->readLine();qDebug() << line.toInt(0); paragui.set_coasting((line == "1")? true : false);
-    line = textStream->readLine(); line = textStream->readLine();qDebug() << line.toInt(0); paragui.set_fuellgrad(line.toDouble(0));
-    line = textStream->readLine(); line = textStream->readLine();qDebug() << line.toInt(0); paragui.set_acc((line == "1")? true : false);
-    line = textStream->readLine(); line = textStream->readLine();qDebug() << line.toInt(0); paragui.set_noise((line == "1")? true : false);
-    line = textStream->readLine(); line = textStream->readLine();qDebug() << line.toInt(0); paragui.set_noise_power(line.toDouble(0));
-    line = textStream->readLine(); line = textStream->readLine();qDebug() << line.toInt(0); paragui.set_FIR_gain(line.toDouble(0));
-    line = textStream->readLine(); line = textStream->readLine();qDebug() << line.toInt(0); paragui.set_u_1(line.toDouble(0));
-    line = textStream->readLine(); line = textStream->readLine();qDebug() << line.toInt(0); paragui.set_harmonic_number(line.toInt(0));
-    line = textStream->readLine(); line = textStream->readLine();qDebug() << line.toInt(0); paragui.set_freq_mod(line.toDouble(0));
-    line = textStream->readLine(); line = textStream->readLine();qDebug() << line.toInt(0); paragui.set_single_particle((line == "1")? true : false);
-    line = textStream->readLine(); line = textStream->readLine();qDebug() << line.toInt(0); paragui.set_distortion_angle(line.toInt(0));
-    line = textStream->readLine(); line = textStream->readLine();qDebug() << line.toInt(0); paragui.set_distortion_steps_coasting(line.toInt(0));
-    line = textStream->readLine(); line = textStream->readLine();qDebug() << line.toInt(0); paragui.set_distortion_active((line == "1") ? true : false);
-    line = textStream->readLine(); line = textStream->readLine();qDebug() << line.toInt(0); paragui.set_distortion_time_repeat(line.toInt(0));
-    line = textStream->readLine(); line = textStream->readLine();qDebug() << line.toInt(0); paragui.set_distortion_repeat_active((line == "1")? true : false);
+    QString line = textStream->readLine(); line = textStream->readLine();/*qDebug() << line.toInt(0);*/ paragui.set_anz_um(line.toInt(0));
+    line = textStream->readLine(); line = textStream->readLine();/*qDebug() << line.toInt(0);*/ paragui.set_anz_teil(line.toInt(0));
+    line = textStream->readLine(); line = textStream->readLine();/*qDebug() << line.toInt(0);*/ paragui.set_anz_threads(line.toInt(0));
+    line = textStream->readLine(); line = textStream->readLine();/*qDebug() << line.toInt(0);*/ paragui.set_hist_anz(line.toInt(0));
+    line = textStream->readLine(); line = textStream->readLine();/*qDebug() << line.toInt(0);*/ paragui.set_nukl_ener(line.toDouble(0));
+    line = textStream->readLine(); line = textStream->readLine();/*qDebug() << line.toInt(0);*/ paragui.set_save_gap(line.toInt(0));
+    line = textStream->readLine(); line = textStream->readLine();/*qDebug() << line.toInt(0);*/ paragui.set_spannung(line);
+    line = textStream->readLine(); line = textStream->readLine();/*qDebug() << line.toInt(0);*/ paragui.set_ion_sort(line);
+    line = textStream->readLine(); line = textStream->readLine();/*qDebug() << line.toInt(0);*/ paragui.set_regler(line);
+    line = textStream->readLine(); line = textStream->readLine();/*qDebug() << line.toInt(0);*/ paragui.set_coasting((line == "1")? true : false);
+    line = textStream->readLine(); line = textStream->readLine();/*qDebug() << line.toInt(0);*/ paragui.set_fuellgrad(line.toDouble(0));
+    line = textStream->readLine(); line = textStream->readLine();/*qDebug() << line.toInt(0);*/ paragui.set_acc((line == "1")? true : false);
+    line = textStream->readLine(); line = textStream->readLine();/*qDebug() << line.toInt(0);*/ paragui.set_noise((line == "1")? true : false);
+    line = textStream->readLine(); line = textStream->readLine();/*qDebug() << line.toInt(0);*/ paragui.set_noise_power(line.toDouble(0));
+    line = textStream->readLine(); line = textStream->readLine();/*qDebug() << line.toInt(0);*/ paragui.set_FIR_gain(line.toDouble(0));
+    line = textStream->readLine(); line = textStream->readLine();/*qDebug() << line.toInt(0);*/ paragui.set_u_1(line.toDouble(0));
+    line = textStream->readLine(); line = textStream->readLine();/*qDebug() << line.toInt(0);*/ paragui.set_harmonic_number(line.toInt(0));
+    line = textStream->readLine(); line = textStream->readLine();/*qDebug() << line.toInt(0);*/ paragui.set_freq_mod(line.toDouble(0));
+    line = textStream->readLine(); line = textStream->readLine();/*qDebug() << line.toInt(0);*/ paragui.set_single_particle((line == "1")? true : false);
+    line = textStream->readLine(); line = textStream->readLine();/*qDebug() << line.toInt(0);*/ paragui.set_distortion_angle(line.toInt(0));
+    line = textStream->readLine(); line = textStream->readLine();/*qDebug() << line.toInt(0);*/ paragui.set_distortion_steps_coasting(line.toInt(0));
+    line = textStream->readLine(); line = textStream->readLine();/*qDebug() << line.toInt(0);*/ paragui.set_distortion_active((line == "1") ? true : false);
+    line = textStream->readLine(); line = textStream->readLine();/*qDebug() << line.toInt(0);*/ paragui.set_distortion_time_repeat(line.toInt(0));
+    line = textStream->readLine(); line = textStream->readLine();/*qDebug() << line.toInt(0);*/ paragui.set_distortion_repeat_active((line == "1")? true : false);
   file->close();
   }
 }

@@ -1,4 +1,4 @@
-//define get and set funcs in details
+//define get- and set-funcs in details
 #include "paragui.h"
 #include "ui_paragui.h"
 

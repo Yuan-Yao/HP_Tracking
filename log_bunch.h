@@ -27,7 +27,7 @@ class Log_Bunch
     std::vector< std::vector<double> > log_bunch_moment_DEo_2; //second order moment energy deviation seperate for every bunch
     std::vector< std::vector<double> > log_bunch_moment_phi_1_DEo_1; //cross-correlation between phi and energy deviation
     std::vector< std::vector<double> > emittance; //emittance; occupation in phase space seperated by bunches
-    std::vector<double> emittance_com; //sum of all single bucket emittance
+    std::vector<double> emittance_sum; //sum of all single bucket emittance
     std::vector< std::vector<double> > log_histogramm; //complete histogram phi synchrotron
     std::vector< std::vector<double> > log_histogramm_dis; //complete distorted histogram phi of synchrotron
     std::vector< std::vector<double> >fft_phase_0; //Fourier-Transformation phase deviation by bucket
@@ -55,7 +55,7 @@ class Log_Bunch
     QVector<double> get_log_fft_phase_dis_0(int j){return QVector<double>::fromStdVector(fft_phase_dis_0[j]);}
     QVector<double> get_log_fft_amp_dis_0(int j){return QVector<double>::fromStdVector(fft_amp_dis_0[j]);}
     QVector<double> get_emittance(int j){return QVector<double>::fromStdVector(emittance[j]);}
-    QVector<double> get_emittance_com(){return QVector<double>::fromStdVector(emittance_com);}
+    QVector<double> get_emittance_sum(){return QVector<double>::fromStdVector(emittance_sum);}
     QVector<double> get_moment_DEo_1(int j){return QVector<double>::fromStdVector(log_bunch_moment_DEo_1[j]);}
     QVector<double> get_moment_phi_1(int j){return QVector<double>::fromStdVector(log_bunch_moment_phi_1[j]);}
     QVector<double> get_moment_DEo_2(int j){return QVector<double>::fromStdVector(log_bunch_moment_DEo_2[j]);}

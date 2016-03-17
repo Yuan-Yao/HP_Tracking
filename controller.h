@@ -37,7 +37,7 @@ class Controller
     std::vector<double> u;                            //control variable
     std::vector< std::vector<double> > fd_xfir;       //sum of product of coefficients and values
     std::vector< std::vector<double> > fd_xI;         //discrete integrator
-    std::vector< std::vector<double> > Delta_phi_gap; //phi_shift control varialbe
+    std::vector< std::vector<double> > Delta_phi_gap; //phi_shift control variable
     std::vector< std::vector<double> > fir_phi_det;   //Delta_phi_det = Delta_phi - Delta_phi_Gap (with feedthroug Samuel Braun Masterarbeit 2014)
 
     //Hamilton-DFT-phi_gap
